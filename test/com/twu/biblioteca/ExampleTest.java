@@ -14,6 +14,7 @@ public class ExampleTest {
 
     private final PrintStream originalOut = System.out;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final BibliotecaApp app = new BibliotecaApp();
 
     @Before
     public void setUpStreams() {
@@ -33,12 +34,12 @@ public class ExampleTest {
 
     @Test
     public void testListBooks() {
-        BibliotecaApp app = new BibliotecaApp();
         app.initBooks();
         app.listBooks();
-        assertEquals("Book Name\r\n" +
-                        "CleanCode\r\n" +
-                        "DevOps Practice\r\n",
+        assertEquals("Book Name\tAuthor\tPublished Year\r\n" +
+                        "CleanCode\tRobert C. Martin\t2012\r\n" +
+                        "DevOps Practice\tJoakim Verona\t2016\r\n",
                 outContent.toString());
     }
+
 }
