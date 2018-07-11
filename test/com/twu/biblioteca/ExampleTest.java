@@ -30,4 +30,15 @@ public class ExampleTest {
         BibliotecaApp.welcome();
         assertEquals("Welcome to Biblioteca!\r\n", outContent.toString());
     }
+
+    @Test
+    public void testListBooks() {
+        BibliotecaApp app = new BibliotecaApp();
+        app.initBooks();
+        app.listBooks();
+        assertEquals("Book Name\r\n" +
+                        "CleanCode\r\n" +
+                        "DevOps Practice\r\n",
+                outContent.toString());
+    }
 }
