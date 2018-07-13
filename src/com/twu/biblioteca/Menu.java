@@ -13,7 +13,7 @@ import java.util.List;
  * just need to add menu items and call the execute() method.
  */
 public class Menu {
-    private static BufferedReader in;
+    public static BufferedReader in;
     private static Menu rootMenu;
     private List<MenuItem> itemList;
     private MenuItem exitItem;

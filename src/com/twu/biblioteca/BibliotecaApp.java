@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -8,6 +11,7 @@ import java.util.stream.Collectors;
 public class BibliotecaApp {
 
     ArrayList<Book> books = new ArrayList<Book>();
+    Menu menu = new Menu();
 
     public static void main(String[] args) {
         BibliotecaApp app = new BibliotecaApp();
@@ -33,10 +37,29 @@ public class BibliotecaApp {
     }
 
     public void initMenu() {
-        Menu menu = new Menu();
         menu.setTitle("Biblioteca App");
         menu.addItem(new MenuItem("List Books", this, "listBooks"));
+        menu.addItem(new MenuItem("Check Out Book With Name", this, "checkOutBookPromote"));
+        menu.addItem(new MenuItem("Return Book With Name", this, "returnBookPromote"));
         menu.execute();
+    }
+
+    public void checkOutBookPromote(){
+        try {
+            String input = menu.in.readLine();
+            checkOutBook(input);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void returnBookPromote(){
+        try {
+            String input = menu.in.readLine();
+            returnBook(input);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void checkOutBook(String name) {
