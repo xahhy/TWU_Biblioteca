@@ -65,4 +65,20 @@ public class ExampleTest {
         app.checkOutBook("NoCleanCode");
         assertTrue(outContent.toString().endsWith("That book is not available\r\n"));
     }
+
+    @Test
+    public void testReturnABookWithName() {
+        app.initBooks();
+        app.checkOutBook("CleanCode");
+        app.returnBook("CleanCode");
+        assertTrue(outContent.toString().endsWith("Thank you for returning the book\r\n"));
+    }
+
+    @Test
+    public void testReturnABookWithWrongName() {
+        app.initBooks();
+        app.checkOutBook("CleanCode");
+        app.returnBook("NoCleanCode");
+        assertTrue(outContent.toString().endsWith("That is not a valid book to return\r\n"));
+    }
 }

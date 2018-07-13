@@ -47,4 +47,13 @@ public class BibliotecaApp {
             System.out.println("That book is not available");
         }
     }
+
+    public void returnBook(String name) {
+        Optional<Book> first = books.stream().filter(book -> book.name.equals(name)).peek(book -> book.setCheckedOut(false)).findFirst();
+        if (first.isPresent()) {
+            System.out.println("Thank you for returning the book");
+        }else {
+            System.out.println("That is not a valid book to return");
+        }
+    }
 }
