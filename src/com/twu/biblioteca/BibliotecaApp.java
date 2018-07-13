@@ -9,7 +9,7 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         BibliotecaApp app = new BibliotecaApp();
         app.initBooks();
-        app.listBooks();
+        app.initMenu();
     }
 
     public static void welcome() {
@@ -20,10 +20,18 @@ public class BibliotecaApp {
         books.add(new Book("CleanCode", "Robert C. Martin", "2012"));
         books.add(new Book("DevOps Practice", "Joakim Verona", "2016"));
     }
+
     public void listBooks() {
         System.out.println("Book Name\tAuthor\tPublished Year");
-        for (Book book: books) {
+        for (Book book : books) {
             System.out.println(book);
         }
+    }
+
+    public void initMenu() {
+        Menu menu = new Menu();
+        menu.setTitle("Biblioteca App");
+        menu.addItem(new MenuItem("List Books", this, "listBooks"));
+        menu.execute();
     }
 }
