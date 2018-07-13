@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class BibliotecaApp {
@@ -39,6 +40,11 @@ public class BibliotecaApp {
     }
 
     public void checkOutBook(String name) {
-        books.stream().filter(book -> book.name.equals(name)).peek(book -> book.setCheckedOut(true)).collect(Collectors.toList());
+        Optional<Book> first = books.stream().filter(book -> book.name.equals(name)).peek(book -> book.setCheckedOut(true)).findFirst();
+        if (first.isPresent()) {
+            System.out.println("Thank you! Enjoy the book");
+        }else {
+            System.out.println("That book is not available");
+        }
     }
 }

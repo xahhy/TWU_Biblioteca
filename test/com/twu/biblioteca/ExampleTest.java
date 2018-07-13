@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ExampleTest {
 
@@ -47,8 +48,21 @@ public class ExampleTest {
         app.initBooks();
         app.checkOutBook("CleanCode");
         app.listBooks();
-        assertEquals("Book Name\tAuthor\tPublished Year\r\n" +
-                        "DevOps Practice\tJoakim Verona\t2016\r\n",
-                outContent.toString());
+        assertTrue(outContent.toString().endsWith("Book Name\tAuthor\tPublished Year\r\n" +
+                "DevOps Practice\tJoakim Verona\t2016\r\n"));
+    }
+
+    @Test
+    public void testCheckOutABook() {
+        app.initBooks();
+        app.checkOutBook("CleanCode");
+        assertTrue(outContent.toString().endsWith("Thank you! Enjoy the book\r\n"));
+    }
+
+    @Test
+    public void testCheckOutABookWithWrongName() {
+        app.initBooks();
+        app.checkOutBook("NoCleanCode");
+        assertTrue(outContent.toString().endsWith("That book is not available\r\n"));
     }
 }
