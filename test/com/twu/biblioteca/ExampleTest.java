@@ -42,4 +42,13 @@ public class ExampleTest {
                 outContent.toString());
     }
 
+    @Test
+    public void testListBooksNotCheckedOut() {
+        app.initBooks();
+        app.checkOutBook("CleanCode");
+        app.listBooks();
+        assertEquals("Book Name\tAuthor\tPublished Year\r\n" +
+                        "DevOps Practice\tJoakim Verona\t2016\r\n",
+                outContent.toString());
+    }
 }

@@ -1,6 +1,8 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class BibliotecaApp {
 
@@ -23,7 +25,8 @@ public class BibliotecaApp {
 
     public void listBooks() {
         System.out.println("Book Name\tAuthor\tPublished Year");
-        for (Book book : books) {
+        List<Book> booksAvailable = books.stream().filter(book -> !book.checkedOut).collect(Collectors.toList());
+        for (Book book : booksAvailable) {
             System.out.println(book);
         }
     }
@@ -33,5 +36,9 @@ public class BibliotecaApp {
         menu.setTitle("Biblioteca App");
         menu.addItem(new MenuItem("List Books", this, "listBooks"));
         menu.execute();
+    }
+
+    public void checkOutBook(String name) {
+        books.stream().filter(book -> book.name.equals(name)).peek(book -> book.setCheckedOut(true)).collect(Collectors.toList());
     }
 }

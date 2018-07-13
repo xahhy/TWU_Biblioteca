@@ -36,7 +36,7 @@ public class Menu {
             this.isRootMenu = true; // let this instance know it's a root menu
             this.setTitle("Menu");
 
-            this.exitItem = new MenuItem("Exit"); // A root menu will exit from the program
+            this.exitItem = new MenuItem("Quit"); // A root menu will exit from the program
         }
         else {
             this.setTitle("Sub Menu");
