@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 public class BibliotecaApp {
 
     ArrayList<Book> books = new ArrayList<Book>();
+    ArrayList<Movie> movies = new ArrayList<Movie>();
     Menu menu = new Menu();
 
     public static void main(String[] args) {
@@ -77,6 +78,18 @@ public class BibliotecaApp {
             System.out.println("Thank you for returning the book");
         }else {
             System.out.println("That is not a valid book to return");
+        }
+    }
+
+    public void addMovie(String name, String director, String year, Float rating) {
+        movies.add(new Movie(name, director, year, rating));
+    }
+
+    public void listMovies() {
+        System.out.println("Movie Name\tAuthor\tPublished Year\tDirector\tRating");
+        List<Movie> moviesAvailable = movies.stream().filter(movie -> !movie.checkedOut).collect(Collectors.toList());
+        for (Movie movie : moviesAvailable) {
+            System.out.println(movie);
         }
     }
 }
