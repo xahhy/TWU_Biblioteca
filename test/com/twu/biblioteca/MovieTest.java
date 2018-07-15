@@ -48,14 +48,14 @@ public class MovieTest {
         app.addMovie("Zootopia", "Rich Moore", "2016", 8.0f);
     }
 
-//    @Test
-//    public void testListMoviesNotCheckedOut() {
-//        initMovies();
-//        app.checkOutMovie("CleanCode");
-//        app.listMovies();
-//        assertTrue(outContent.toString().endsWith("Movie Name\tAuthor\tPublished Year\r\n" +
-//                "DevOps Practice\tJoakim Verona\t2016\r\n"));
-//    }
+    @Test
+    public void testListMoviesNotCheckedOut() {
+        initMovies();
+        app.checkOutMovie("Zootopia");
+        app.listMovies();
+        assertTrue(outContent.toString().endsWith("Movie Name\tAuthor\tPublished Year\tDirector\tRating\r\n" +
+                "哈利·波特与魔法石\t克里斯·哥伦布\t2001\t7.5\r\n"));
+    }
 //
 //    @Test
 //    public void testCheckOutAMovie() {

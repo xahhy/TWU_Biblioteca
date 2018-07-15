@@ -92,4 +92,13 @@ public class BibliotecaApp {
             System.out.println(movie);
         }
     }
+
+    public void checkOutMovie(String name) {
+        Optional<Movie> first = movies.stream().filter(movie -> movie.name.equals(name)).peek(book -> book.setCheckedOut(true)).findFirst();
+        if (first.isPresent()) {
+            System.out.println("Thank you! Enjoy the movie");
+        }else {
+            System.out.println("That movie is not available");
+        }
+    }
 }
