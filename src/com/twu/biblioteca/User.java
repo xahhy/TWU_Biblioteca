@@ -5,12 +5,16 @@ public class User {
     private final Integer age;
     private final String eMail;
     private final String phoneNumber;
+    private final String libraryNumber;
+    private String password;
 
-    User(String name, Integer age, String eMail, String phoneNumber) {
+    User(String name, Integer age, String eMail, String phoneNumber, String libraryNumber, String password) {
         this.name = name;
         this.age = age;
         this.eMail = eMail;
         this.phoneNumber = phoneNumber;
+        this.libraryNumber = libraryNumber;
+        this.password = password;
     }
 
     void showDetail() {
@@ -18,6 +22,11 @@ public class User {
         System.out.println("User Age:" + this.age);
         System.out.println("User E-Mail:" + this.eMail);
         System.out.println("User Phone Number:" + this.phoneNumber);
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 
     @Override
@@ -33,5 +42,9 @@ public class User {
             return false;
         }
         return true;
+    }
+
+    public String getLibraryNumber() {
+        return libraryNumber;
     }
 }

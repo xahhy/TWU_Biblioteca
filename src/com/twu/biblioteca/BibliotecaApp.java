@@ -1,8 +1,6 @@
 package com.twu.biblioteca;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +11,8 @@ public class BibliotecaApp {
     ArrayList<Book> books = new ArrayList<Book>();
     ArrayList<Movie> movies = new ArrayList<Movie>();
     Menu menu = new Menu();
+    private ArrayList<User> users = new ArrayList<User>();
+    private Optional<User> loggedInUser;
 
     public static void main(String[] args) {
         BibliotecaApp app = new BibliotecaApp();
@@ -100,5 +100,18 @@ public class BibliotecaApp {
         }else {
             System.out.println("That movie is not available");
         }
+    }
+
+    public void addUser(String name, Integer age, String eMail, String phoneNumber, String libraryNumber, String password) {
+        users.add(new User(name, age, eMail, phoneNumber, libraryNumber, password));
+    }
+
+    public boolean login(String libraryNumber, String password) {
+        this.loggedInUser = users.stream().filter(user -> user.getLibraryNumber().equals(libraryNumber)).findFirst();
+        return this.loggedInUser.isPresent();
+    }
+
+    public User getLoginUser() {
+        return this.loggedInUser.get();
     }
 }

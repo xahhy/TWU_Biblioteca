@@ -59,7 +59,7 @@ public class MovieTest {
 
     @Test
     public void testShowUserDetail() {
-        User user = new User("Tom", 18, "tom@gmail.com", "110");
+        User user = new User("Tom", 18, "tom@gmail.com", "110","111-1111", "password");
         user.showDetail();
         assertEquals("User Name:Tom\r\n" +
                 "User Age:18\r\n" +
@@ -69,8 +69,20 @@ public class MovieTest {
 
     @Test
     public void testUserEquality() {
-        User user= new User("Tom", 18, "tom@gmail.com", "110");
-        assertEquals(new User("Tom", 18, "tom@gmail.com", "110"), user );
+        User user= new User("Tom", 18, "tom@gmail.com", "110","111-1111", "password");
+        assertEquals(new User("Tom", 18, "tom@gmail.com", "110","111-1111", "password"), user );
+    }
+
+    @Test
+    public void testUserLogin() {
+        addUser();
+        boolean isLoggedIn = app.login("111-1111", "password");
+        assertEquals(new User("Tom", 18, "tom@gmail.com", "110","111-1111", "password"), app.getLoginUser());
+        assertTrue(isLoggedIn);
+    }
+
+    private void addUser() {
+        app.addUser("Tom", 18, "tom@gmail.com", "110","111-1111", "password");
     }
 
     //
