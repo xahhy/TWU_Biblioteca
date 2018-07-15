@@ -56,7 +56,18 @@ public class MovieTest {
         assertTrue(outContent.toString().endsWith("Movie Name\tAuthor\tPublished Year\tDirector\tRating\r\n" +
                 "哈利·波特与魔法石\t克里斯·哥伦布\t2001\t7.5\r\n"));
     }
-//
+
+    @Test
+    public void testShowUserDetail() {
+        User user = new User("Tom", 18, "tom@gmail.com", "110");
+        user.showDetail();
+        assertEquals("User Name:Tom\r\n" +
+                "User Age:18\r\n" +
+                "User E-Mail:tom@gmail.com\r\n" +
+                "User Phone Number:110\r\n", outContent.toString());
+    }
+
+    //
 //    @Test
 //    public void testCheckOutAMovie() {
 //        app.initMovies();
