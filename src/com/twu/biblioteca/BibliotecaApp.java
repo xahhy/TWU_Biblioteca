@@ -107,11 +107,13 @@ public class BibliotecaApp {
     }
 
     public boolean login(String libraryNumber, String password) {
-        this.loggedInUser = users.stream().filter(user -> user.getLibraryNumber().equals(libraryNumber)).findFirst();
+        this.loggedInUser = users.stream()
+                .filter(user -> user.checkPassword(libraryNumber, password))
+                .findFirst();
         return this.loggedInUser.isPresent();
     }
 
     public User getLoginUser() {
-        return this.loggedInUser.get();
+        return this.loggedInUser.orElse(null);
     }
 }

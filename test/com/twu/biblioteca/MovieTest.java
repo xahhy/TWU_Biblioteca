@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class MovieTest {
@@ -79,6 +80,14 @@ public class MovieTest {
         boolean isLoggedIn = app.login("111-1111", "password");
         assertEquals(new User("Tom", 18, "tom@gmail.com", "110","111-1111", "password"), app.getLoginUser());
         assertTrue(isLoggedIn);
+    }
+
+    @Test
+    public void testUserLoginWithWrongPassword() {
+        addUser();
+        boolean isLoggedIn = app.login("111-1111", "wrongpassword");
+        assertEquals(null, app.getLoginUser());
+        assertFalse(isLoggedIn);
     }
 
     private void addUser() {

@@ -47,4 +47,8 @@ public class User {
     public String getLibraryNumber() {
         return libraryNumber;
     }
+
+    public boolean checkPassword(String libraryNumber, String password) {
+        return this.libraryNumber.equals(libraryNumber) && this.password.equals(password);
+    }
 }
