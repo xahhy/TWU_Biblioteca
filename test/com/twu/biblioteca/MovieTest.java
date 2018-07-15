@@ -67,6 +67,12 @@ public class MovieTest {
                 "User Phone Number:110\r\n", outContent.toString());
     }
 
+    @Test
+    public void testUserEquality() {
+        User user= new User("Tom", 18, "tom@gmail.com", "110");
+        assertEquals(new User("Tom", 18, "tom@gmail.com", "110"), user );
+    }
+
     //
 //    @Test
 //    public void testCheckOutAMovie() {
